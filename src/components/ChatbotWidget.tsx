@@ -247,7 +247,6 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
           onClick={() => {
             setIsOpen(true);
             setIsMinimized(false);
-            setHasUnread(false);
           }}
           className="relative group w-14 h-14 sm:w-16 sm:h-16 bg-transparent border-0 shadow-none transition-transform duration-300 hover:scale-115 flex items-center justify-center cursor-pointer p-0 filter drop-shadow-xl focus:outline-none"
           aria-label="Open AI Growth Chatbot"

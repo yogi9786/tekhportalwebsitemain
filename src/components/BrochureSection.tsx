@@ -12,6 +12,13 @@ interface PageData {
   quote?: string;
 }
 
+interface PageData {
+  section: string;
+  title: string;
+  items: string[];
+  quote?: string;
+}
+
 const PAGES: PageData[] = [
   {
     section: "Our Services",
@@ -32,12 +39,13 @@ const PAGES: PageData[] = [
       "UI/UX Design",
       "Website Development",
       "E-Commerce Solutions",
-      "Website Maintenance",
+      "Website Maintenance", 
       "Web Content Writing",
       "Custom Web Applications",
       "API & System Integrations",
     ],
   },
+  
   {
     section: "Our Services",
     title: "Digital Marketing",
