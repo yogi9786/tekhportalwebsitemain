@@ -45,14 +45,14 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
     <div id="top" className="min-h-screen bg-[#edf5ef] text-[#131f1c] font-sans antialiased">
       {/* 1. Header Navigation - Sticky on top with big logo */}
       <HeaderNav
-        onOpenAudit={() => handleOpenAuditWithService("General Growth Audit")}
+        onOpenAudit={() => handleOpenAuditWithService("Search Engine Optimization (SEO)")}
         onOpenServices={() => setIsServicesOpen(true)}
       />
 
       {/* 2. Hero Section - Soft grid lines & services search bar */}
       <HeroSection
         onOpenAudit={(service) =>
-          handleOpenAuditWithService(service || "The Profit Playbook Audit")
+          handleOpenAuditWithService(service || "Complete 360° Growth Package")
         }
         onOpenServices={() => setIsServicesOpen(true)}
         onSelectService={(serviceTitle) =>
@@ -82,7 +82,7 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
 
       {/* 7. FAQ Section (Below Brochure Section) */}
       <FaqSection
-        onOpenAudit={() => handleOpenAuditWithService("FAQ Consultation")}
+        onOpenAudit={() => handleOpenAuditWithService("Digital Marketing Consultation")}
       />
 
       {/* 8. Premium Animated Client Roadmap / How We Work (Below FAQ) */}
@@ -104,7 +104,7 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
 
       {/* Green 3D Animated BotAvatar Floating Icon */}
       <ChatbotWidget
-        onOpenAudit={() => handleOpenAuditWithService("Free Growth Audit")}
+        onOpenAudit={() => handleOpenAuditWithService("Register Brand")}
       />
 
       {/* Modals & Drawers */}

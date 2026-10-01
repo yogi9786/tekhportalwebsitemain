@@ -40,7 +40,9 @@ const RegisterBrandModalContent: React.FC<ContentProps> = ({
     notes: ""
   }));
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const isAllSelected = formData.selectedServices.length === ALL_SERVICE_TITLES.length;
 
@@ -62,9 +64,42 @@ const RegisterBrandModalContent: React.FC<ContentProps> = ({
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch("https://formspree.io/f/moevzjdk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          organizationName: formData.organizationName,
+          contactPerson: formData.contactPerson,
+          email: formData.email,
+          phone: formData.phone,
+          website: formData.website,
+          selectedPackage: formData.selectedPackage,
+          selectedServices: formData.selectedServices.join(", "),
+          notes: formData.notes,
+          formType: "Full Organization / Package Registration"
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        setErrorMsg(data.error || "Submission failed. Please try again or reach us on WhatsApp.");
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your internet connection or reach us on WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleResetAndClose = () => {
@@ -346,6 +381,12 @@ const RegisterBrandModalContent: React.FC<ContentProps> = ({
                 />
               </div>
 
+              {errorMsg && (
+                <div className="p-2.5 rounded-xl bg-red-900/60 border border-red-500/40 text-red-200 text-xs">
+                  {errorMsg}
+                </div>
+              )}
+
               {/* Submit CTA Bar */}
               <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 text-[11px] text-zinc-400">
@@ -355,10 +396,17 @@ const RegisterBrandModalContent: React.FC<ContentProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-2.5 rounded-full bg-[#fbb753] hover:bg-[#faaf3a] text-[#1b227c] font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-2.5 rounded-full bg-[#fbb753] hover:bg-[#faaf3a] text-[#1b227c] font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 cursor-pointer disabled:opacity-50"
                 >
-                  <span>Submit Organization Registration</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  {isSubmitting ? (
+                    <span>Registering...</span>
+                  ) : (
+                    <>
+                      <span>Submit Organization Registration</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>

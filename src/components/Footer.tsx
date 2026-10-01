@@ -56,32 +56,37 @@ export const Footer: React.FC<FooterProps> = () => {
             <ul className="space-y-2 text-xs text-zinc-300">
               <li>
                 <a href="#services" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> 12 Growth Services
+                  <span className="text-[#10b981]">›</span> Services
                 </a>
               </li>
               <li>
                 <a href="#pricing" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Packages &amp; Pricing
+                  <span className="text-[#10b981]">›</span> Packages
                 </a>
               </li>
               <li>
                 <a href="#brochure" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Official Agency Brochure
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Frequently Asked Questions
+                  <span className="text-[#10b981]">›</span> Brochure (PDF)
                 </a>
               </li>
               <li>
                 <a href="#how-we-work" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> How We Work (Roadmap)
+                  <span className="text-[#10b981]">›</span> Roadmap
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
+                  <span className="text-[#10b981]">›</span> FAQ
+                </a>
+              </li>
+              <li>
+                <a href="#socials" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
+                  <span className="text-[#10b981]">›</span> Socials
                 </a>
               </li>
               <li>
                 <a href="#contact" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Strategy Consultation
+                  <span className="text-[#10b981]">›</span> Contact
                 </a>
               </li>
             </ul>
@@ -109,16 +114,16 @@ export const Footer: React.FC<FooterProps> = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Bengaluru Office (lg:col-span-3) */}
+          {/* Column 4: Contact & Location (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#a7f3d0]">
-              Bengaluru Office
+              Connect With Us
             </h4>
             
             <div className="space-y-2.5 text-xs text-zinc-300">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#10b981] shrink-0 mt-0.5" />
-                <span>Yelahanka, Bengaluru, Karnataka 560064</span>
+                <span>Bengaluru, Karnataka, India</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#10b981] shrink-0" />
@@ -153,7 +158,7 @@ export const Footer: React.FC<FooterProps> = () => {
         <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
           <p>© {new Date().getFullYear()} Tekhportal. All rights reserved.</p>
           <div className="flex items-center gap-5">
-            <span>Bengaluru HQ · Yelahanka</span>
+            <span>Bengaluru, India · Digital Marketing</span>
             <a href="#top" className="hover:text-[#10b981] transition-colors font-semibold flex items-center gap-1">
               <span>Back to top</span>
               <ArrowUp className="w-3.5 h-3.5" />

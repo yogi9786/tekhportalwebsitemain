@@ -98,7 +98,7 @@ export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({
             onClick={onOpenAudit}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#07382c] hover:bg-[#10b981] hover:text-black text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer"
           >
-            <span>» GET YOUR FREE GROWTH AUDIT</span>
+            <span>» REGISTER YOUR BRAND</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

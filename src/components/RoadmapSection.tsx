@@ -80,12 +80,12 @@ const ROADMAP_STEPS: RoadmapStepData[] = [
 
 // Desktop Positions for Stage Blocks positioned along the Isometric Diagonal Beacons
 const DESKTOP_STAGE_POSITIONS: { [key: number]: React.CSSProperties } = {
-  1: { left: "1.5%", top: "43%", width: "185px" },
-  2: { left: "17.5%", top: "30%", width: "185px" },
-  3: { left: "33.5%", top: "18%", width: "185px" },
-  4: { left: "49.5%", top: "6%", width: "185px" },
-  5: { left: "65.5%", top: "-5%", width: "185px" },
-  6: { right: "1.5%", top: "-17%", width: "195px" },
+  1: { left: "0.5%", top: "50%", width: "180px" },
+  2: { left: "16.5%", top: "38%", width: "180px" },
+  3: { left: "32.5%", top: "26%", width: "180px" },
+  4: { left: "48.5%", top: "14%", width: "180px" },
+  5: { left: "64.5%", top: "2%", width: "180px" },
+  6: { right: "0.5%", top: "-10%", width: "188px" },
 };
 
 interface RoadmapSectionProps {
@@ -192,7 +192,7 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit }) =
       <div className="iso-ambient-float pointer-events-none absolute top-1/3 right-12 h-6 w-6 rounded-full border-2 border-[#F2A202]/30" />
       <div className="iso-ambient-float pointer-events-none absolute bottom-24 left-1/4 h-8 w-8 border border-[#063F32]/15 rotate-45" />
 
-      <div className="relative z-10 max-w-315 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ======================================================== */}
         {/* TOP BAR WITH CADENCE & POLICY BADGES                     */}
@@ -220,27 +220,23 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit }) =
         {/* ======================================================== */}
         <div
           ref={trackCanvasRef}
-          className="hidden lg:block relative mt-8 mb-4 h-145 w-full"
+          className="hidden lg:block relative mt-6 mb-4 h-135 xl:h-140 w-full"
         >
-          {/* Embedded Top-Left Hero Title Block (Matching Reference Image) */}
-          <div className="absolute top-0 left-0 max-w-sm pointer-events-none z-10 space-y-2.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#063F32]/8 border border-[#063F32]/15 text-[#063F32] text-[10px] font-bold uppercase tracking-[0.2em]">
+          {/* Embedded Top-Left Hero Title Block */}
+          <div className="absolute top-0 left-0 max-w-md pointer-events-none z-10 space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#063F32]/8 border border-[#063F32]/15 text-[#063F32] text-[10px] font-bold uppercase tracking-[0.2em]">
               <Sparkles className="w-3 h-3 text-[#F2A202]" />
               <span>How We Work</span>
             </div>
 
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-[#063F32] tracking-tight uppercase leading-[1.08]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#063F32] tracking-tight uppercase leading-[1.1]">
               From First Discussion <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0B6B52] via-[#10b981] to-[#F2A202]">
                 To Continuous Growth
               </span>
             </h2>
 
-            <div className="h-1 w-16 rounded-full bg-linear-to-r from-[#063F32] to-[#10b981]" />
-
-            <p className="text-xs text-slate-600 font-medium leading-relaxed max-w-70">
-              A predictable growth roadmap engineered for compounding business revenue.
-            </p>
+            <div className="h-1 w-14 rounded-full bg-linear-to-r from-[#063F32] to-[#10b981]" />
           </div>
 
           {/* Isometric SVG Diagonal Conveyor Track Layer */}

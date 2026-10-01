@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Mark } from "./Mark";
-import { X, Check, ArrowRight, ShieldCheck } from "lucide-react";
+import { DigitalDartsLogo } from "./DigitalDartsLogo";
+import { X, Check, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 
 interface AuditModalProps {
   isOpen: boolean;
@@ -19,80 +19,101 @@ export const AuditModal: React.FC<AuditModalProps> = ({
     phone: "",
     website: "",
     service: defaultService,
-    budget: "₹50k - ₹1.5L / mo",
     notes: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      // simulate submission finish
-    }, 1500);
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xzezqdrv", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType: "Brand Service Registration (Modal)"
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        setErrorMsg(data.error || "Submission failed. Please try again or WhatsApp us directly.");
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your connection or WhatsApp us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-[#0e1017] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg bg-[#07382c] border border-[#10b981]/30 rounded-3xl p-6 sm:p-8 shadow-2xl text-white">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-white/5 hover:bg-white/15 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {submitted ? (
-          <div className="text-center py-8 space-y-4">
-            <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center">
+          <div className="text-center py-6 sm:py-8 space-y-4">
+            <div className="w-16 h-16 mx-auto rounded-full bg-[#10b981]/20 text-[#10b981] border border-[#10b981]/40 flex items-center justify-center shadow-lg">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold tracking-tight text-white">
-              Audit Request Received!
+            <h3 className="text-2xl font-sans font-black tracking-tight text-white uppercase">
+              Registration Received!
             </h3>
-            <p className="text-sm text-zinc-300 max-w-sm mx-auto">
-              Our Bengaluru growth strategists are analyzing your domain (
-              <span className="text-emerald-400 font-mono">
-                {formData.website || "your website"}
-              </span>
-              ). We will send your custom audit report within 24 hours.
+            <p className="text-xs sm:text-sm text-emerald-100/90 max-w-sm mx-auto leading-relaxed">
+              Thank you, <span className="font-bold text-white">{formData.name}</span>. Our digital marketing team in Bengaluru will review your brand details and reach out on WhatsApp / Email within 24 hours.
             </p>
             <button
               onClick={() => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="mt-6 px-6 py-2.5 rounded-full bg-emerald-500 text-black font-bold text-sm hover:bg-emerald-400 transition-colors"
+              className="mt-4 px-7 py-2.5 rounded-full bg-[#10b981] hover:bg-[#fbb753] text-[#07382c] font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
             >
-              Done
+              Done &amp; Close
             </button>
           </div>
         ) : (
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <Mark light size={24} />
-              <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
-                  Tekhportal Growth Diagnostic
-                </span>
-                <h3 className="text-xl font-bold tracking-tight text-white">
-                  Claim Free Digital Growth Audit
-                </h3>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <DigitalDartsLogo light />
             </div>
 
-            <p className="text-xs text-zinc-400 mb-6">
-              Get an in-depth audit of your SEO rankings, Google/Meta Ads efficiency, website speed, and conversion funnels from Bengaluru's leading agency.
-            </p>
+            <div className="mb-5 space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 border border-white/20 text-[#a7f3d0] text-[10px] font-bold uppercase tracking-widest shadow-2xs">
+                <Sparkles className="w-3 h-3 text-[#10b981]" />
+                <span>Register With Tekhportal</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-sans font-black text-white tracking-tight uppercase leading-tight">
+                Register Your <span className="text-[#10b981]">Brand</span>
+              </h3>
+              <p className="text-xs text-emerald-100/80 leading-relaxed">
+                Register your business to start scaling with our digital marketing services across SEO, Google &amp; Meta Ads, Web Design, and Social Media.
+              </p>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block mb-1">
+                  <label className="text-[10.5px] font-bold text-emerald-200 uppercase tracking-wider block mb-1">
                     Your Name *
                   </label>
                   <input
@@ -108,7 +129,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block mb-1">
+                  <label className="text-[10.5px] font-bold text-emerald-200 uppercase tracking-wider block mb-1">
                     Business Email *
                   </label>
                   <input
@@ -126,7 +147,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block mb-1">
+                  <label className="text-[10.5px] font-bold text-emerald-200 uppercase tracking-wider block mb-1">
                     Website / Brand URL *
                   </label>
                   <input
@@ -142,11 +163,12 @@ export const AuditModal: React.FC<AuditModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block mb-1">
-                    WhatsApp / Phone
+                  <label className="text-[10.5px] font-bold text-emerald-200 uppercase tracking-wider block mb-1">
+                    WhatsApp / Phone *
                   </label>
                   <input
                     type="tel"
+                    required
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) =>
@@ -158,7 +180,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({
               </div>
 
               <div>
-                <label className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block mb-1">
+                <label className="text-[10.5px] font-bold text-emerald-200 uppercase tracking-wider block mb-1">
                   Primary Focus Service
                 </label>
                 <select
@@ -169,47 +191,57 @@ export const AuditModal: React.FC<AuditModalProps> = ({
                   className="modal-select-emerald"
                 >
                   <option value="Search Engine Optimization (SEO)">
-                    Search Engine Optimization (SEO) & Audits
+                    Search Engine Optimization (SEO)
                   </option>
-                  <option value="Paid Advertising (PPC)">
-                    Paid Advertising (Google Ads, Meta & LinkedIn)
+                  <option value="Paid Advertising (Google & Meta Ads)">
+                    Paid Advertising (Google &amp; Meta Ads)
                   </option>
                   <option value="Website Design & Development">
-                    Website Design & Development
+                    Website Design &amp; Development
                   </option>
-                  <option value="Content Marketing">Content Marketing & Strategy</option>
                   <option value="Graphic Design & Creatives">
-                    Graphic Design & Brand Identity
+                    Graphic Design &amp; Brand Identity
                   </option>
                   <option value="Video Marketing & Reels">
-                    Video Marketing & Reels Production
+                    Video Marketing &amp; Reels Production
+                  </option>
+                  <option value="Social Media Management">
+                    Social Media Management
                   </option>
                   <option value="Lead Generation & Funnels">
-                    Lead Generation & Sales Funnels
+                    Lead Generation &amp; Sales Funnels
                   </option>
-                  <option value="Branding Services">Branding Services</option>
-                  <option value="E-commerce Marketing">
-                    E-commerce Marketing (Shopify/WooCommerce)
-                  </option>
-                  <option value="UX/UI Design">UX/UI Design & Prototyping</option>
-                  <option value="Complete 360 Growth Package">
+                  <option value="Complete 360° Growth Package">
                     Complete 360° Growth Package
                   </option>
                 </select>
               </div>
 
-              <div className="pt-2 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-[11px] text-zinc-400">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>100% Confidential · No Spam</span>
+              {errorMsg && (
+                <div className="p-2.5 rounded-xl bg-red-900/60 border border-red-500/40 text-red-200 text-xs">
+                  {errorMsg}
+                </div>
+              )}
+
+              <div className="pt-2 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5 text-[11px] text-emerald-200/80">
+                  <ShieldCheck className="w-4 h-4 text-[#10b981]" />
+                  <span>100% Confidential</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs transition-all shadow-lg shadow-emerald-500/20 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#10b981] hover:bg-[#fbb753] text-[#07382c] font-black text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer disabled:opacity-50"
                 >
-                  <span>Request Free Audit</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  {isSubmitting ? (
+                    <span>Registering...</span>
+                  ) : (
+                    <>
+                      <span>Register Brand</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
@@ -219,3 +251,5 @@ export const AuditModal: React.FC<AuditModalProps> = ({
     </div>
   );
 };
+
+export default AuditModal;

@@ -9,39 +9,27 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: "What services are included in Tekhportal's growth solutions?",
+    question: "What digital marketing services does Tekhportal offer?",
     answer:
-      "Tekhportal provides end-to-end digital growth across 12 specialized services including Technical SEO, Google & Meta Paid Advertising, High-Speed Web Development, Video Marketing & Reels, Lead Generation Funnels, Brand Strategy, and E-Commerce Scaling.",
+      "We offer full-service digital marketing including SEO, Google & Meta Paid Advertising, Custom Website Design & Development, Graphic Design, Video & Reels Production, and Social Media Marketing.",
     category: "Services"
   },
   {
-    question: "How does the Complimentary Growth Roadmap work?",
+    question: "How quickly can we launch campaigns and see results?",
     answer:
-      "Our senior strategists analyze your digital presence across 4 core vectors: SEO ranking keywords, technical website speed & Core Web Vitals, paid ad spend efficiency, and lead conversion bottlenecks. You receive a bespoke, 360° action plan within 24 hours at zero cost or obligation.",
-    category: "Audit & Roadmap"
-  },
-  {
-    question: "How quickly will we see measurable results?",
-    answer:
-      "Performance advertising (Google, Meta, YouTube PPC) and lead funnels typically produce qualified customer inquiries within 7 to 14 days of launch. Search Engine Optimization (SEO) and brand authority build compounding organic pipeline momentum within 60 to 90 days.",
+      "Paid advertising campaigns (Google & Meta PPC) can go live within 3 to 7 days, while Search Engine Optimization (SEO) builds compounding organic traffic and authority over 60 to 90 days.",
     category: "Performance"
   },
   {
-    question: "Can we customize our package or choose individual services?",
+    question: "Can we choose individual services or full monthly packages?",
     answer:
-      "Yes! In addition to our transparent monthly tiers (Starter at ₹25,000/mo and Turbo at ₹55,000/mo), our Supersonic tier offers completely bespoke retainers tailored specifically to your industry, target audience, and business goals.",
+      "Yes! You can choose individual services (like SEO or Paid Ads) or select a complete monthly digital marketing package tailored to your goals.",
     category: "Pricing"
-  },
-  {
-    question: "Will I have a dedicated account manager and regular reporting?",
-    answer:
-      "Yes. Every client is assigned a dedicated Growth Account Manager at our Bengaluru HQ. You receive continuous campaign optimization, bi-weekly/monthly strategy review calls, and transparent reporting with real-time performance analytics.",
-    category: "Support"
   },
   {
     question: "How do we get started with Tekhportal?",
     answer:
-      "You can claim your free growth roadmap, book a 15-minute discovery consultation, or connect directly on WhatsApp at +91 9066234321. We will audit your current setup and deliver your tailored strategy within 24 hours.",
+      "Simply register your brand with us or connect directly on WhatsApp at +91 9066234321. We will discuss your goals and create a custom digital marketing plan for your business.",
     category: "Getting Started"
   }
 ];
@@ -62,7 +50,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenAudit }) => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#07382c]/10 border border-[#07382c]/15 text-[#07382c] text-[11px] font-bold uppercase tracking-wider mb-2.5">
             <HelpCircle className="w-3.5 h-3.5 text-[#10b981]" />
             <span>Got Questions?</span>
@@ -73,7 +61,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenAudit }) => {
           </h2>
 
           <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Everything you need to know about partnering with Tekhportal to accelerate your brand's digital pipeline.
+            Quick answers about partnering with Tekhportal for your digital marketing growth.
           </p>
         </div>
 
@@ -142,7 +130,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenAudit }) => {
                 Have a specific question not covered here?
               </h4>
               <p className="text-[11px] text-emerald-100/80">
-                Talk directly with our Bengaluru growth strategists.
+                Talk directly with our Bengaluru digital marketing team.
               </p>
             </div>
           </div>
@@ -153,7 +141,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenAudit }) => {
                 onClick={onOpenAudit}
                 className="px-4 py-2.5 rounded-xl bg-[#10b981] hover:bg-[#fbb753] text-[#07382c] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
               >
-                Claim Free Roadmap
+                Register Brand
               </button>
             )}
             <a

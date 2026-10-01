@@ -16,7 +16,7 @@ export const QuickActionsGooey: React.FC<QuickActionsGooeyProps> = ({
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end pointer-events-auto select-none">
       <Liquid blur={6} contrast={18} fill="#07382c" shadow="0 10px 25px rgba(0,0,0,0.3)">
-        {/* Sub-item 1: Free Audit */}
+        {/* Sub-item 1: Register Service */}
         <Liquid.Item
           x={isOpen ? 0 : 0}
           y={isOpen ? -130 : 0}
@@ -29,14 +29,14 @@ export const QuickActionsGooey: React.FC<QuickActionsGooeyProps> = ({
               onOpenAudit();
             }}
             className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#07382c] text-[#a7f3d0] hover:text-white border border-[#10b981]/40 text-xs font-bold shadow-lg transition-colors cursor-pointer whitespace-nowrap"
-            title="Claim Free Audit"
+            title="Register For Digital Marketing Service"
           >
             <Zap className="w-3.5 h-3.5 text-[#10b981]" />
-            <span>Free Growth Audit</span>
+            <span>Register Service</span>
           </button>
         </Liquid.Item>
 
-        {/* Sub-item 2: Register Brand */}
+        {/* Sub-item 2: Register Package */}
         <Liquid.Item
           x={isOpen ? 0 : 0}
           y={isOpen ? -75 : 0}
@@ -50,10 +50,10 @@ export const QuickActionsGooey: React.FC<QuickActionsGooeyProps> = ({
               onOpenRegister();
             }}
             className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#07382c] text-white hover:text-[#a7f3d0] border border-[#10b981]/40 text-xs font-bold shadow-lg transition-colors cursor-pointer whitespace-nowrap"
-            title="Register Organization / Brand"
+            title="Register 360° Growth Package"
           >
             <Building2 className="w-3.5 h-3.5 text-[#10b981]" />
-            <span>Register Brand</span>
+            <span>Register Package</span>
           </button>
         </Liquid.Item>
 

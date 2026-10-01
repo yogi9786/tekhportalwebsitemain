@@ -114,10 +114,10 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#465f56] block">
-                    Headquarters
+                    Location
                   </span>
                   <span className="text-xs font-semibold text-[#07382c] leading-relaxed block">
-                    Yelahanka, Bengaluru, Karnataka 560064
+                    Bengaluru, Karnataka, India
                   </span>
                 </div>
               </div>

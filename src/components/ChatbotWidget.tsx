@@ -84,7 +84,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
           action: () => handleSendPreset("Can I get the agency brochure?")
         },
         {
-          label: "🚀 Free Growth Audit",
+          label: "🚀 Register Brand",
           action: () => {
             setIsOpen(false);
             onOpenAudit();
@@ -113,7 +113,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
         text: `Here is our transparent monthly pricing framework:\n\n• Starter Package: ₹25,000/mo (SEO, Social, Content & Consultation)\n• Turbo Growth: ₹55,000/mo (Full Google/Meta PPC, Web, SEO & Video Reels)\n• Supersonic: Custom Enterprise Scope.\n\nAll packages include month-to-month flexibility!`,
         actionButtons: [
           {
-            label: "🚀 Claim Free Growth Audit",
+            label: "🚀 Register Your Brand",
             action: () => {
               setIsOpen(false);
               onOpenAudit();
@@ -139,7 +139,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
             icon: Download
           },
           {
-            label: "🎯 Get Specific Service Audit",
+            label: "🎯 Register for Services",
             action: () => {
               setIsOpen(false);
               onOpenAudit();
@@ -163,10 +163,10 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
       };
     }
 
-    // 4. Contact / Office location queries
+    // 4. Contact location queries
     if (q.includes("contact") || q.includes("phone") || q.includes("number") || q.includes("whatsapp") || q.includes("email") || q.includes("office") || q.includes("bengaluru") || q.includes("location") || q.includes("address")) {
       return {
-        text: `📍 Headquarters: Yelahanka, Bengaluru, Karnataka 560064\n📞 Phone & WhatsApp: ${AGENCY_KNOWLEDGE.phone}\n✉️ Email: ${AGENCY_KNOWLEDGE.email}`,
+        text: `📍 Location: Bengaluru, Karnataka, India\n📞 Phone & WhatsApp: ${AGENCY_KNOWLEDGE.phone}\n✉️ Email: ${AGENCY_KNOWLEDGE.email}`,
         actionButtons: [
           {
             label: "💬 WhatsApp Us Directly",
@@ -174,7 +174,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
             icon: ExternalLink
           },
           {
-            label: "📝 Fill Consultation Form",
+            label: "📝 Fill Contact Form",
             action: () => {
               setIsOpen(false);
               const el = document.getElementById("contact");
@@ -187,10 +187,10 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenAudit }) => 
 
     // 5. Default Fallback
     return {
-      text: `Thanks for reaching out! Our team in Bengaluru can analyze your brand's SEO rankings, PPC efficiency, and acquisition costs. Would you like a free 360° growth audit or direct consultation?`,
+      text: `Thanks for reaching out! We are a digital marketing agency based in Bengaluru helping brands scale with SEO, Paid Ads, Web Development, and Social Media. Would you like to register your brand or connect directly?`,
       actionButtons: [
         {
-          label: "🚀 Get Free 360° Growth Audit",
+          label: "🚀 Register Your Brand",
           action: () => {
             setIsOpen(false);
             onOpenAudit();

@@ -164,7 +164,7 @@ export const ServicesDrawer: React.FC<ServicesDrawerProps> = ({
                     }}
                     className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500 hover:text-black transition-colors cursor-pointer"
                   >
-                    Request Audit
+                    Register
                   </button>
                 )}
               </div>
