@@ -46,7 +46,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenAudit }) => {
   };
 
   return (
-    <section id="faq" className="w-full bg-[#f4f9f5] py-8 sm:py-12 border-b border-[#07382c]/10 relative">
+    <section id="faq" className="w-full bg-[#f4f9f5] py-8 sm:py-12 border-b border-[#07382c]/10 relative scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

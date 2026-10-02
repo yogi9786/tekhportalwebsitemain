@@ -180,7 +180,7 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit }) =
     <section
       ref={sectionRef}
       id="how-we-work"
-      className="relative w-full bg-linear-to-br from-[#F5F9F3] via-[#F1F8F0] to-[#EAF5EC] py-12 sm:py-16 md:py-20 border-b border-[#063F32]/10 overflow-hidden"
+      className="relative w-full bg-linear-to-br from-[#F5F9F3] via-[#F1F8F0] to-[#EAF5EC] py-12 sm:py-16 md:py-20 border-b border-[#063F32]/10 overflow-hidden scroll-mt-20"
     >
       {/* Soft Ambient Background Elements */}
       <div className="pointer-events-none absolute -top-40 -right-40 h-136 w-136 rounded-full bg-[#DDEED8]/70 blur-3xl" />

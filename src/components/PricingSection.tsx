@@ -8,7 +8,7 @@ interface PricingSectionProps {
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) => {
   return (
-    <section id="pricing" className="w-full bg-[#07382c] text-white py-8 sm:py-10 border-t border-b border-[#0c4e3e]">
+    <section id="pricing" className="w-full bg-[#07382c] text-white py-8 sm:py-10 border-t border-b border-[#0c4e3e] scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Simple Section Header: Just 'Pricing' */}

@@ -80,7 +80,7 @@ const SOCIAL_ITEMS: SocialItem[] = [
 
 export const SocialChannelsSection: React.FC = () => {
   return (
-    <section id="socials" className="w-full bg-[#edf5ef] py-6 sm:py-8 border-t border-b border-[#07382c]/10">
+    <section id="socials" className="w-full bg-[#edf5ef] py-6 sm:py-8 border-t border-b border-[#07382c]/10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-6">
         <span className="text-xs sm:text-sm font-sans font-black text-[#07382c] uppercase tracking-widest">
           Follow Us:

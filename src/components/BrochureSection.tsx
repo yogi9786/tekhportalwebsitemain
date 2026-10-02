@@ -386,7 +386,7 @@ export const BrochureSection: React.FC = () => {
   return (
     <section
       id="brochure"
-      className="relative flex w-full items-center justify-center bg-[#f4f9f5] border-b border-[#07382c]/10 px-4 py-6 sm:py-8"
+      className="relative flex w-full items-center justify-center bg-[#f4f9f5] border-b border-[#07382c]/10 px-4 py-6 sm:py-8 scroll-mt-20"
     >
       <div className="relative z-10 flex w-full max-w-6xl flex-col items-center gap-6 lg:gap-10 lg:flex-row lg:items-center lg:justify-between">
         {/* Left: text + actions */}

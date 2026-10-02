@@ -7,7 +7,7 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = () => {
   return (
-    <section id="services" className="w-full bg-[#f4f9f5] py-8 sm:py-10 md:py-12 border-b border-[#07382c]/10">
+    <section id="services" className="w-full bg-[#f4f9f5] py-8 sm:py-10 md:py-12 border-b border-[#07382c]/10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Simple Clean Section Header in Green */}
         <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">

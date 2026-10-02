@@ -42,14 +42,14 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
   };
 
   return (
-    <div id="top" className="min-h-screen bg-[#edf5ef] text-[#131f1c] font-sans antialiased">
-      {/* 1. Header Navigation - Sticky on top with big logo */}
+    <div id="top" className="min-h-screen bg-[#edf5ef] text-[#131f1c] font-sans antialiased relative">
+      {/* 1. Sticky Floating Header Navigation (Only the floating pill sticks, no full background) */}
       <HeaderNav
         onOpenAudit={() => handleOpenAuditWithService("Search Engine Optimization (SEO)")}
         onOpenServices={() => setIsServicesOpen(true)}
       />
 
-      {/* 2. Hero Section - Soft grid lines & services search bar */}
+      {/* 2. Hero Section */}
       <HeroSection
         onOpenAudit={(service) =>
           handleOpenAuditWithService(service || "Complete 360° Growth Package")
