@@ -8,8 +8,6 @@ import {
   Users,
   TrendingUp,
   Trophy,
-  CalendarCheck,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { IsometricRoadmapCanvas } from "./IsometricRoadmapCanvas";
@@ -92,7 +90,7 @@ interface RoadmapSectionProps {
   onOpenAudit?: () => void;
 }
 
-export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit }) => {
+export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _onOpenAudit }) => {
   const [activeStep, setActiveStep] = useState<number>(1);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
@@ -193,27 +191,6 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit }) =
       <div className="iso-ambient-float pointer-events-none absolute bottom-24 left-1/4 h-8 w-8 border border-[#063F32]/15 rotate-45" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* ======================================================== */}
-        {/* TOP BAR WITH CADENCE & POLICY BADGES                     */}
-        {/* ======================================================== */}
-        <div className="flex items-center justify-end gap-2.5 sm:gap-3 pb-6">
-          <button
-            onClick={onOpenAudit}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/95 border border-[#063F32]/15 text-[#063F32] text-xs font-bold shadow-xs hover:border-[#10b981]/40 hover:bg-white transition-all cursor-pointer"
-          >
-            <CalendarCheck className="w-3.5 h-3.5 text-[#0B6B52]" />
-            <span>WEEKLY MEETINGS &amp; UPDATES</span>
-          </button>
-
-          <button
-            onClick={onOpenAudit}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#FFFDF5] border border-[#F2A202]/40 text-[#063F32] text-xs font-bold shadow-xs hover:border-[#F2A202]/70 hover:bg-white transition-all cursor-pointer"
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-[#F2A202]" />
-            <span>CONTINUOUS BUSINESS GROWTH</span>
-          </button>
-        </div>
 
         {/* ======================================================== */}
         {/* DESKTOP VIEW (>= 1024px): Embedded Hero Title & Track     */}

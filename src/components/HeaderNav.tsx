@@ -13,7 +13,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full pt-2 sm:pt-2.5 pb-1 px-3 sm:px-6 pointer-events-none bg-transparent transition-all">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full pt-2 sm:pt-2.5 pb-1 px-3 sm:px-6 pointer-events-none bg-transparent transition-all">
       {/* Boxed Floating Pill with Green Translucent Blur */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 min-h-12.5 sm:min-h-14 py-1 sm:py-1.5 flex items-center justify-between bg-[#07382c]/95 backdrop-blur-md border border-[#10b981]/25 rounded-full shadow-lg shadow-[#07382c]/20 relative z-10 transition-all pointer-events-auto">
 

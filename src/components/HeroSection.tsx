@@ -314,7 +314,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-linear-to-b from-[#edf6f0] via-[#f0f8f3] to-[#edf5ef] pt-3 sm:pt-5 pb-8 sm:pb-10 md:pb-12 overflow-hidden border-b border-[#07382c]/10 flex flex-col justify-center transition-colors"
+      className="relative w-full bg-linear-to-b from-[#edf6f0] via-[#f0f8f3] to-[#edf5ef] pt-20 sm:pt-22 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden border-b border-[#07382c]/10 flex flex-col justify-center transition-colors"
     >
       {/* ── Highlighted Interactive grid canvas (full hero, pointer-events: none) ── */}
       <canvas
