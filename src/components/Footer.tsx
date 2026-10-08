@@ -1,10 +1,12 @@
 import React from "react";
 import { DigitalDartsLogo } from "./DigitalDartsLogo";
 import { MapPin, Phone, Mail, ArrowUp, ArrowUpRight } from "lucide-react";
+import { TEKHPORTAL_SERVICES } from "../data/tekhportalData";
 
 interface FooterProps {
   onOpenAudit?: () => void;
   onOpenServices?: () => void;
+  onNavigateToService?: (serviceSlug: string) => void;
 }
 
 const FOOTER_SOCIAL_TEXT_LINKS = [
@@ -30,13 +32,15 @@ const FOOTER_SOCIAL_TEXT_LINKS = [
   }
 ];
 
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC<FooterProps> = ({
+  onNavigateToService
+}) => {
   return (
     <footer className="w-full bg-[#07382c] text-white pt-10 sm:pt-14 pb-8 sm:pb-10 border-t border-[#0c4e3e]">
       {/* Full-width container with balanced edge padding */}
       <div className="w-full px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         
-        {/* Main 4-Column Grid tailored for Single Landing Page */}
+        {/* Main 4-Column Grid tailored for Single Landing Page & Service Hub */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-8 sm:pb-10 border-b border-[#0c4e3e]/80">
           
           {/* Column 1: Brand Info & Tagline (lg:col-span-4) */}
@@ -48,51 +52,34 @@ export const Footer: React.FC<FooterProps> = () => {
             </p>
           </div>
 
-          {/* Column 2: On This Page Quick Anchors (lg:col-span-3) */}
+          {/* Column 2: Dedicated Growth Service Pages (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#a7f3d0]">
-              Quick Navigation
+              Dedicated Service Pages
             </h4>
-            <ul className="space-y-2 text-xs text-zinc-300">
-              <li>
-                <a href="#services" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Services
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Packages
-                </a>
-              </li>
-              <li>
-                <a href="#brochure" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Brochure (PDF)
-                </a>
-              </li>
-              <li>
-                <a href="#how-we-work" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Roadmap
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#socials" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Socials
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-[#10b981] transition-colors flex items-center gap-1.5">
-                  <span className="text-[#10b981]">›</span> Contact
-                </a>
-              </li>
+            <ul className="space-y-1.5 text-xs text-zinc-300">
+              {TEKHPORTAL_SERVICES.slice(0, 7).map((s) => (
+                <li key={s.id}>
+                  <button
+                    onClick={() => {
+                      if (onNavigateToService) {
+                        onNavigateToService(s.id);
+                      } else {
+                        window.location.hash = `/services/${s.id}`;
+                      }
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="hover:text-[#10b981] transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
+                  >
+                    <span className="text-[#10b981] group-hover:translate-x-0.5 transition-transform">›</span>
+                    <span className="group-hover:underline">{s.shortTitle || s.title}</span>
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Text Social Channels (lg:col-span-2) */}
+          {/* Column 3: Social Channels & Quick Nav (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#a7f3d0]">
               Social Channels

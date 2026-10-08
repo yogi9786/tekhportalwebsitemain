@@ -7,6 +7,7 @@ interface HeroSectionProps {
   onOpenAudit: (serviceTitle?: string) => void;
   onOpenServices: () => void;
   onSelectService?: (serviceTitle: string) => void;
+  onNavigateToService?: (serviceSlug: string) => void;
   headerSlot?: React.ReactNode;
 }
 
@@ -146,6 +147,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenAudit,
   onOpenServices,
   onSelectService,
+  onNavigateToService,
   headerSlot,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -172,13 +174,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     );
   }).slice(0, 5);
 
-  const handleSelectService = (serviceTitle: string) => {
-    setSearchQuery(serviceTitle);
+  const handleSelectService = (serviceIdOrTitle: string) => {
+    const foundService = TEKHPORTAL_SERVICES.find(
+      (s) => s.id.toLowerCase() === serviceIdOrTitle.toLowerCase() || s.title.toLowerCase() === serviceIdOrTitle.toLowerCase()
+    );
+    
+    setSearchQuery(foundService ? foundService.title : serviceIdOrTitle);
     setIsDropdownOpen(false);
+    
+    if (foundService && onNavigateToService) {
+      onNavigateToService(foundService.id);
+      return;
+    }
+
     if (onSelectService) {
-      onSelectService(serviceTitle);
+      onSelectService(serviceIdOrTitle);
     } else {
-      onOpenAudit(serviceTitle);
+      onOpenAudit(serviceIdOrTitle);
     }
   };
 
@@ -186,7 +198,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     e.preventDefault();
     setIsDropdownOpen(false);
     if (filteredServices.length > 0) {
-      handleSelectService(filteredServices[0]!.title);
+      handleSelectService(filteredServices[0]!.id);
     } else {
       onOpenServices();
     }

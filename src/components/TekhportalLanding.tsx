@@ -19,10 +19,12 @@ import { ChatbotWidget } from "./ChatbotWidget";
 
 export interface TekhportalLandingProps {
   initialService?: string;
+  onNavigateToService?: (serviceSlug: string) => void;
 }
 
 export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
-  initialService = "Search Engine Optimization (SEO)"
+  initialService = "Search Engine Optimization (SEO)",
+  onNavigateToService
 }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isAuditOpen, setIsAuditOpen] = useState(false);
@@ -43,10 +45,11 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
 
   return (
     <div id="top" className="min-h-screen bg-[#edf5ef] text-[#131f1c] font-sans antialiased relative">
-      {/* 1. Sticky Floating Header Navigation (Only the floating pill sticks, no full background) */}
+      {/* 1. Sticky Floating Header Navigation */}
       <HeaderNav
         onOpenAudit={() => handleOpenAuditWithService("Search Engine Optimization (SEO)")}
         onOpenServices={() => setIsServicesOpen(true)}
+        onNavigateToService={onNavigateToService}
       />
 
       {/* 2. Hero Section */}
@@ -55,9 +58,15 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
           handleOpenAuditWithService(service || "Complete 360° Growth Package")
         }
         onOpenServices={() => setIsServicesOpen(true)}
-        onSelectService={(serviceTitle) =>
-          handleOpenAuditWithService(serviceTitle)
-        }
+        onSelectService={(serviceTitle) => {
+          if (onNavigateToService) {
+            // Find slug if possible or fallback to audit
+            onNavigateToService(serviceTitle);
+          } else {
+            handleOpenAuditWithService(serviceTitle);
+          }
+        }}
+        onNavigateToService={onNavigateToService}
       />
 
       {/* 3. Dark Forest Green Trust / Clients Marquee Banner */}
@@ -70,6 +79,7 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
         onSelectServiceForAudit={(serviceTitle) =>
           handleOpenAuditWithService(serviceTitle)
         }
+        onNavigateToService={onNavigateToService}
       />
 
       {/* 5. Pricing & Growth Packages Section */}
@@ -100,6 +110,7 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
       <Footer
         onOpenAudit={() => handleOpenAuditWithService("General Inquiry")}
         onOpenServices={() => setIsServicesOpen(true)}
+        onNavigateToService={onNavigateToService}
       />
 
       {/* Green 3D Animated BotAvatar Floating Icon */}
@@ -114,6 +125,7 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
         onSelectServiceForAudit={(serviceTitle) => {
           handleOpenAuditWithService(serviceTitle);
         }}
+        onNavigateToService={onNavigateToService}
       />
 
       <AuditModal

@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { TEKHPORTAL_SERVICES } from "../data/tekhportalData";
 import type { ServiceItem } from "../types";
 import { Mark } from "./Mark";
-import { X, ExternalLink, ArrowRight, Search, CheckCircle2 } from "lucide-react";
+import { X, ArrowRight, Search, CheckCircle2 } from "lucide-react";
 
 interface ServicesDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectServiceForAudit?: (serviceTitle: string) => void;
+  onNavigateToService?: (serviceSlug: string) => void;
 }
 
 export const ServicesDrawer: React.FC<ServicesDrawerProps> = ({
   isOpen,
   onClose,
-  onSelectServiceForAudit
+  onSelectServiceForAudit,
+  onNavigateToService
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -146,15 +148,20 @@ export const ServicesDrawer: React.FC<ServicesDrawerProps> = ({
 
               {/* Action Links */}
               <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-                <a
-                  href={service.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors group-hover:underline"
+                <button
+                  onClick={() => {
+                    onClose();
+                    if (onNavigateToService) {
+                      onNavigateToService(service.id);
+                    } else {
+                      window.location.hash = `/services/${service.id}`;
+                    }
+                  }}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors group-hover:underline cursor-pointer"
                 >
-                  <span>Know More</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  <span>Explore Service Page</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
 
                 {onSelectServiceForAudit && (
                   <button
@@ -164,7 +171,7 @@ export const ServicesDrawer: React.FC<ServicesDrawerProps> = ({
                     }}
                     className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white/10 hover:bg-emerald-500 hover:text-black transition-colors cursor-pointer"
                   >
-                    Register
+                    Audit
                   </button>
                 )}
               </div>
@@ -209,3 +216,5 @@ export const ServicesDrawer: React.FC<ServicesDrawerProps> = ({
     </div>
   );
 };
+
+export default ServicesDrawer;

@@ -78,12 +78,12 @@ const ROADMAP_STEPS: RoadmapStepData[] = [
 
 // Desktop Positions for Stage Blocks positioned along the Isometric Diagonal Beacons
 const DESKTOP_STAGE_POSITIONS: { [key: number]: React.CSSProperties } = {
-  1: { left: "0.5%", top: "50%", width: "180px" },
-  2: { left: "16.5%", top: "38%", width: "180px" },
-  3: { left: "32.5%", top: "26%", width: "180px" },
-  4: { left: "48.5%", top: "14%", width: "180px" },
-  5: { left: "64.5%", top: "2%", width: "180px" },
-  6: { right: "0.5%", top: "-10%", width: "188px" },
+  1: { left: "0.5%", top: "48%", width: "178px" },
+  2: { left: "16.5%", top: "36%", width: "178px" },
+  3: { left: "32.5%", top: "24%", width: "178px" },
+  4: { left: "48.5%", top: "12%", width: "178px" },
+  5: { left: "64.5%", top: "0%", width: "178px" },
+  6: { right: "0.5%", top: "-2%", width: "185px" },
 };
 
 interface RoadmapSectionProps {
@@ -193,11 +193,11 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _on
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ======================================================== */}
-        {/* DESKTOP VIEW (>= 1024px): Embedded Hero Title & Track     */}
+        {/* DESKTOP VIEW (>= 1280px): Embedded Hero Title & Track    */}
         {/* ======================================================== */}
         <div
           ref={trackCanvasRef}
-          className="hidden lg:block relative mt-6 mb-4 h-135 xl:h-140 w-full"
+          className="hidden xl:block relative mt-6 mb-4 h-135 xl:h-140 w-full"
         >
           {/* Embedded Top-Left Hero Title Block */}
           <div className="absolute top-0 left-0 max-w-md pointer-events-none z-10 space-y-2">
@@ -306,18 +306,18 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _on
         </div>
 
         {/* ======================================================== */}
-        {/* MOBILE & TABLET VIEW (< 1024px)                          */}
+        {/* MOBILE & TABLET VIEW (< 1280px: iPads, Tablets, Phones)   */}
         {/* ======================================================== */}
-        <div className="block lg:hidden mt-4">
+        <div className="block xl:hidden mt-4">
           
-          {/* Mobile Title Block */}
-          <div className="space-y-2 mb-6">
+          {/* Mobile/Tablet Title Block */}
+          <div className="space-y-2 mb-6 sm:mb-8 text-center sm:text-left">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#063F32]/8 border border-[#063F32]/15 text-[#063F32] text-[10px] font-bold uppercase tracking-[0.2em]">
               <Sparkles className="w-3 h-3 text-[#F2A202]" />
               <span>How We Work</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-black text-[#063F32] tracking-tight uppercase leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#063F32] tracking-tight uppercase leading-snug">
               From First Discussion <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-[#0B6B52] via-[#10b981] to-[#F2A202]">
                 To Continuous Growth
@@ -325,10 +325,8 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _on
             </h2>
           </div>
 
-          <div className="relative pl-7 space-y-4">
-            {/* Glowing Vertical Neon Spine */}
-            <div className="absolute left-2.5 top-3 bottom-3 w-1 rounded-full bg-linear-to-b from-[#063F32] via-[#10b981] to-[#F2A202]" />
-
+          {/* iPad & Tablet Grid (sm:grid sm:grid-cols-2 lg:grid-cols-3) */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 md:gap-5">
             {ROADMAP_STEPS.map((step, index) => {
               const isSelected = activeStep === step.id;
               const isHovered = hoveredStep === step.id;
@@ -337,12 +335,82 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _on
 
               return (
                 <div
-                  key={`mobile-${step.id}`}
+                  key={`tablet-${step.id}`}
                   ref={(el) => {
                     mobileCardsRef.current[index] = el;
                   }}
-                  className="relative"
+                  onClick={() => setActiveStep(step.id)}
+                  className={`rounded-2xl p-4 sm:p-5 backdrop-blur-md border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                    isSpecial
+                      ? isTarget
+                        ? "bg-linear-to-br from-[#FFFDF5] to-[#FDF4DF] border-[#F2A202]/70 shadow-lg shadow-[#F2A202]/15 scale-[1.02]"
+                        : "bg-[#FFFDF5]/90 border-[#F2A202]/40 shadow-xs hover:border-[#F2A202]/70"
+                      : isTarget
+                      ? "bg-white/95 border-[#10b981]/50 shadow-lg shadow-[#063F32]/10 scale-[1.02]"
+                      : "bg-white/80 hover:bg-white/95 border-[#063F32]/10 shadow-xs"
+                  }`}
                 >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2.5">
+                      <span
+                        className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                          isSpecial
+                            ? "bg-[#F2A202] text-[#063F32]"
+                            : isTarget
+                            ? "bg-[#063F32] text-white"
+                            : "bg-[#063F32]/8 text-[#063F32]"
+                        }`}
+                      >
+                        Phase {step.stepNumber} · {step.tag}
+                      </span>
+                      <div
+                        className={`w-7 h-7 rounded-lg flex items-center justify-center ${
+                          isSpecial
+                            ? "text-[#F2A202] bg-[#F2A202]/10"
+                            : isTarget
+                            ? "text-[#10b981] bg-[#10b981]/10"
+                            : "text-[#063F32]/70 bg-[#063F32]/5"
+                        }`}
+                      >
+                        {step.icon}
+                      </div>
+                    </div>
+
+                    <h3 className="font-black text-sm text-[#063F32] uppercase leading-tight">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-1.5 text-xs text-slate-600 leading-relaxed font-normal">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {isSpecial && (
+                    <div className="mt-3 pt-2 border-t border-[#F2A202]/30 flex items-center justify-between text-[10px] font-bold text-[#B45309]">
+                      <span>Compounding Scale</span>
+                      <span className="bg-[#F2A202]/20 px-1.5 py-0.5 rounded text-[9px] uppercase">
+                        Core SLA
+                      </span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile View (< 640px) with Glowing Neon Spine */}
+          <div className="sm:hidden relative pl-7 space-y-4">
+            {/* Glowing Vertical Neon Spine */}
+            <div className="absolute left-2.5 top-3 bottom-3 w-1 rounded-full bg-linear-to-b from-[#063F32] via-[#10b981] to-[#F2A202]" />
+
+            {ROADMAP_STEPS.map((step) => {
+              const isSelected = activeStep === step.id;
+              const isHovered = hoveredStep === step.id;
+              const isTarget = isSelected || isHovered;
+              const isSpecial = step.isSpecialContract;
+
+              return (
+                <div key={`mobile-single-${step.id}`} className="relative">
                   {/* Glowing Spine Milestone Node */}
                   <div
                     onClick={() => setActiveStep(step.id)}
