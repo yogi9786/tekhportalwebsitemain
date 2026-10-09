@@ -106,11 +106,11 @@ export const TEKHPORTAL_SERVICES: ServiceItem[] = [
     link: "https://tekhportal.com/paid-advertising-in-yelahanka-bengaluru/",
     subServices: [
       "Google Ads (Search & Display)",
-      "YouTube Video Ads",
+      "YouTube Video & Shorts Ads",
       "Facebook & Instagram Ads",
+      "WhatsApp Direct-to-Chat Ads",
       "LinkedIn B2B Advertising",
-      "High-Converting Ad Copywriting",
-      "Campaign Bid & ROAS Optimization"
+      "Ruthless Creative Testing & ROAS Optimization"
     ],
     metrics: "4.8x Average Return on Ad Spend",
     tag: "Paid Media",

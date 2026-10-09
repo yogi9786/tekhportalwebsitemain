@@ -1,4 +1,6 @@
 import type { DetailedServiceData } from '../types/serviceDetail';
+import seoReelVideo from '../assets/tekhportal seo .mp4';
+import paidAdsReelVideo from '../assets/tekhportalpaid ads RIO.mp4';
 
 export const DETAILED_SERVICES: Record<string, DetailedServiceData> = {
   "web-dev": {
@@ -271,9 +273,10 @@ export default async function Page() {
     },
     videoProof: {
       title: "Live Google Search Console Traffic Surge & Technical Audit Breakdown",
-      duration: "4:32 min",
-      videoType: "Loom Walkthrough",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: seoReelVideo,
       caption: "Watch how we scaled organic search impressions to 142,000+ monthly clicks with zero ad spend.",
       highlights: [
         { time: "0:00", label: "Initial Site Audit & Crawl Bottlenecks" },
@@ -281,7 +284,7 @@ export default async function Page() {
         { time: "2:40", label: "Local 3-Pack Google Maps Dominance" },
         { time: "3:55", label: "Live GSC Revenue & Traffic Dashboard" }
       ],
-      placeholderNote: "Video Player Canvas Slot: Embed your client case walkthrough, Loom breakdown, or live screen capture here."
+      placeholderNote: "SEO Reel Video Proof"
     },
     imageProofs: [
       {
@@ -476,9 +479,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Live Meta Ads Manager & Google Ads 5.4x ROAS Campaign Breakdown",
-      duration: "5:18 min",
-      videoType: "Dashboard Screen Recording",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "Step-by-step walkthrough of how we scaled ad spend while dropping Customer Acquisition Cost (CAC) by 46%.",
       highlights: [
         { time: "0:00", label: "Campaign Structure & Account Architecture" },
@@ -486,7 +490,7 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
         { time: "3:10", label: "CBO Scaling & Lookalike Audience Stacks" },
         { time: "4:45", label: "Live ROAS Dashboard & Revenue Attribution" }
       ],
-      placeholderNote: "Video Proof Canvas: Show live Ads Manager dashboards, ROAS milestones, and campaign scaling walkthroughs."
+      placeholderNote: "Paid Ads Reel Video Proof"
     },
     imageProofs: [
       {
@@ -540,13 +544,35 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
       },
       {
         title: "Meta (Facebook & Instagram) Funnel Scaling",
-        description: "Cold audience acquisition, dynamic retargeting, custom audience lookalikes, and interactive WhatsApp ad funnels.",
+        description: "Cold audience acquisition, dynamic retargeting, custom audience lookalikes, and interactive visual funnels.",
         iconName: "Share2",
         checkpoints: [
           "Advantage+ audience segmentation & testing",
           "Scroll-stopping visual & video ad creative sets",
           "Dynamic product ads (DPA) catalog setup",
-          "WhatsApp direct-to-chat qualification ads"
+          "Multi-stage retargeting & lookalike stacks"
+        ]
+      },
+      {
+        title: "YouTube Video & Shorts Advertising",
+        description: "High-impact video action campaigns, skippable in-stream ads, and YouTube Shorts engineered to drive qualified brand conversions.",
+        iconName: "Video",
+        checkpoints: [
+          "In-stream skippable & non-skippable video ads",
+          "High-converting YouTube Shorts video creatives",
+          "Custom intent & competitor channel targeting",
+          "Video action campaigns with direct lead forms"
+        ]
+      },
+      {
+        title: "WhatsApp Click-to-Chat & Direct Lead Ads",
+        description: "Driving immediate 1-on-1 conversations and high-ticket customer inquiries straight into WhatsApp with automated routing.",
+        iconName: "MessageSquare",
+        checkpoints: [
+          "Click-to-WhatsApp direct ad campaign setup",
+          "Automated chatbot qualification & instant greeting",
+          "Instant CRM lead routing & sales rep dispatch",
+          "High-converting direct response chat funnels"
         ]
       },
       {

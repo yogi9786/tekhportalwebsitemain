@@ -145,6 +145,26 @@ body {
   border-color: #fbb753;
 }
 
+.modal-input-cream {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  background-color: #ffffff;
+  border: 1px solid rgba(7, 56, 44, 0.16);
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  color: #07382c;
+  box-shadow: 0 1px 2px 0 rgba(7, 56, 44, 0.04);
+  outline: none;
+  transition: all 0.2s ease;
+}
+.modal-input-cream::placeholder {
+  color: #789086;
+}
+.modal-input-cream:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
 .contact-form-input {
   width: 100%;
   padding: 0.625rem 0.875rem;

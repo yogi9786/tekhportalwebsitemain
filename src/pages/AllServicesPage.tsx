@@ -9,9 +9,6 @@ import {
   Search,
   ArrowLeft,
   CheckCircle2,
-  TrendingUp,
-  Award,
-  Zap,
   Layers
 } from "lucide-react";
 
@@ -267,44 +264,6 @@ export const AllServicesPage: React.FC<AllServicesPageProps> = ({
             )}
           </div>
 
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────────
-          4. WHY CHOOSE TEKHPORTAL FULL-MATRIX
-      ───────────────────────────────────────────────────────────────────────── */}
-      <section className="w-full bg-white text-[#07382c] py-14 sm:py-18 border-t border-b border-[#07382c]/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#07382c] bg-[#dbeee1] border border-[#10b981]/30 px-3 py-1 rounded-full inline-flex items-center gap-1.5 mb-3">
-            <Award className="w-3.5 h-3.5 text-[#10b981]" />
-            Full-Spectrum Digital Agency Advantage
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-sans font-black text-[#07382c] tracking-tight uppercase">
-            WHY BRANDS PARTNER WITH TEKHPORTAL<span className="text-[#10b981]">.</span>
-          </h2>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="bg-[#edf5ef] p-6 rounded-2xl border border-[#07382c]/10 text-left">
-              <TrendingUp className="w-6 h-6 text-[#07382c] mb-2" />
-              <h4 className="font-bold text-[#07382c] text-base mb-1">Direct ROI Accountability</h4>
-              <p className="text-xs text-[#465f56] leading-relaxed">
-                Every service links directly to measurable revenue, organic keyword positions, or qualified buyer leads.
-              </p>
-            </div>
-            <div className="bg-[#edf5ef] p-6 rounded-2xl border border-[#07382c]/10 text-left">
-              <Zap className="w-6 h-6 text-[#fbb753] mb-2" />
-              <h4 className="font-bold text-[#07382c] text-base mb-1">High-Speed Execution</h4>
-              <p className="text-xs text-[#465f56] leading-relaxed">
-                48-hour turnarounds for creatives, sub-second web platforms, and continuous weekly ad optimization.
-              </p>
-            </div>
-            <div className="bg-[#edf5ef] p-6 rounded-2xl border border-[#07382c]/10 text-left">
-              <Award className="w-6 h-6 text-[#07382c] mb-2" />
-              <h4 className="font-bold text-[#07382c] text-base mb-1">Bespoke Strategic Identity</h4>
-              <p className="text-xs text-[#465f56] leading-relaxed">
-                Zero cookie-cutter templates. Everything is custom-designed and engineered to build real market authority.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
