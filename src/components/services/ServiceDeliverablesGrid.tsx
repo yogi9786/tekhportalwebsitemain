@@ -95,30 +95,32 @@ export const ServiceDeliverablesGrid: React.FC<ServiceDeliverablesGridProps> = (
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2.5 sm:gap-6">
           {deliverables.map((deliv, idx) => {
             const IconComp = ICON_MAP[deliv.iconName] || Zap;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 border border-[#07382c]/12 shadow-xs hover:border-[#10b981] transition-all"
+                className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-7 border border-[#07382c]/12 shadow-xs hover:border-[#10b981] transition-all flex flex-col justify-between"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#dbeee1] text-[#07382c] flex items-center justify-center mb-3 sm:mb-4 shadow-2xs">
-                  <IconComp className="w-4 h-4 sm:w-5 sm:h-5 text-[#07382c]" />
+                <div>
+                  <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-md sm:rounded-xl bg-[#dbeee1] text-[#07382c] flex items-center justify-center mb-2 sm:mb-4 shadow-2xs">
+                    <IconComp className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#07382c]" />
+                  </div>
+
+                  <h3 className="text-xs sm:text-base md:text-lg font-bold text-[#07382c] mb-1 sm:mb-2 leading-snug line-clamp-2">
+                    {deliv.title}
+                  </h3>
+
+                  <p className="text-[10px] sm:text-xs md:text-sm text-[#465f56] leading-relaxed mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                    {deliv.description}
+                  </p>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-[#07382c] mb-1.5 sm:mb-2 leading-snug">
-                  {deliv.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-[#465f56] leading-relaxed mb-3 sm:mb-4">
-                  {deliv.description}
-                </p>
-
-                <ul className="space-y-1.5 sm:space-y-2 text-xs text-[#2c443c]">
+                <ul className="space-y-1 sm:space-y-2 text-[9px] sm:text-xs text-[#2c443c] mt-auto pt-2 border-t border-[#07382c]/8 sm:border-0 sm:pt-0">
                   {deliv.checkpoints.map((check, cIdx) => (
-                    <li key={cIdx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981] shrink-0 mt-0.5" />
+                    <li key={cIdx} className="flex items-start gap-1.5 sm:gap-2">
+                      <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#10b981] shrink-0 mt-0.5" />
                       <span className="font-medium leading-tight">{check}</span>
                     </li>
                   ))}

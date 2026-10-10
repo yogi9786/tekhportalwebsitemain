@@ -1,7 +1,7 @@
 import type { DetailedServiceData } from '../types/serviceDetail';
 import seoReelVideo from '../assets/tekhportal seo .mp4';
 import paidAdsReelVideo from '../assets/tekhportalpaid ads RIO.mp4';
-import webDevReelVideo from '../assets/tekhportal website service.mp4';
+import webDevReelVideo from '../assets/TEKHPORTALWEBSITESERVICE2.mp4';
 
 export const DETAILED_SERVICES: Record<string, DetailedServiceData> = {
   "web-dev": {
