@@ -1,6 +1,7 @@
 import type { DetailedServiceData } from '../types/serviceDetail';
 import seoReelVideo from '../assets/tekhportal seo .mp4';
 import paidAdsReelVideo from '../assets/tekhportalpaid ads RIO.mp4';
+import webDevReelVideo from '../assets/tekhportal website service.mp4';
 
 export const DETAILED_SERVICES: Record<string, DetailedServiceData> = {
   "web-dev": {
@@ -66,9 +67,10 @@ export default async function Page() {
     },
     videoProof: {
       title: "Interactive Web Experience, Fluid Micro-Animations & Lighthouse Speed Showcase",
-      duration: "3:45 min",
-      videoType: "Interactive Prototype Demo",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: webDevReelVideo,
       caption: "Experience the fluid interactions, headless architecture, and instant sub-second page transitions we build into every web platform.",
       highlights: [
         { time: "0:00", label: "Design System & Figma Component Tokens" },
@@ -574,28 +576,6 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
           "Instant CRM lead routing & sales rep dispatch",
           "High-converting direct response chat funnels"
         ]
-      },
-      {
-        title: "LinkedIn B2B Account-Based Advertising",
-        description: "Laser-targeting CXOs, directors, and enterprise decision-makers with message ads, document ads, and lead gen forms.",
-        iconName: "TrendingUp",
-        checkpoints: [
-          "ABM account list & firmographic targeting",
-          "Native lead generation forms with CRM sync",
-          "Thought leadership sponsored content",
-          "High-ticket B2B pipeline retargeting"
-        ]
-      },
-      {
-        title: "Ruthless Creative Testing & ROAS Optimization",
-        description: "Rapidly iterating visual hooks, headlines, and calls-to-action to scale winning creatives and cut underperforming ad sets.",
-        iconName: "Zap",
-        checkpoints: [
-          "Weekly creative sprints (static, video, carousel)",
-          "Real-time bid and budget management",
-          "Multi-touch attribution & pixel telemetry",
-          "Landing page CRO recommendations"
-        ]
       }
     ],
     processSteps: [
@@ -694,9 +674,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Interactive Figma Click-Through Prototype & Micro-Interaction Showcase",
-      duration: "3:40 min",
-      videoType: "Interactive Prototype Demo",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: seoReelVideo,
       caption: "Experience our clickable Figma prototypes featuring responsive navigation, modal flows, and fluid micro-interactions.",
       highlights: [
         { time: "0:00", label: "Design Token Architecture (Color, Type, Spacing)" },
@@ -887,9 +868,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Full-Funnel Architecture & Automated WhatsApp Lead Qualification Walkthrough",
-      duration: "4:40 min",
-      videoType: "Interactive Walkthrough",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "See how our interactive WhatsApp funnels qualify buyer budgets in real-time and send instant meeting links to top sales reps.",
       highlights: [
         { time: "0:00", label: "High-Converting Multi-Step Form Logic" },
@@ -1083,9 +1065,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Shopify Backend Growth & Omnichannel Scaling Walkthrough",
-      duration: "4:12 min",
-      videoType: "Dashboard Screen Recording",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "Watch how we scaled an e-commerce store from ₹15L/month to over ₹1.48 Cr/month with Google Shopping, Meta DPA ads, and checkout CRO.",
       highlights: [
         { time: "0:00", label: "Shopify Backend Live Revenue Graph" },
@@ -1273,9 +1256,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Klaviyo & CRM Automated Drip Flow Architecture & Revenue Attribution Demo",
-      duration: "3:58 min",
-      videoType: "Dashboard Screen Recording",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "Step-by-step breakdown of how our automated Klaviyo flows generated 38% of total monthly revenue on autopilot.",
       highlights: [
         { time: "0:00", label: "Core Flow Architecture (Welcome vs Cart vs Winback)" },
@@ -1469,9 +1453,10 @@ export async function sendMetaCAPIEvent(event: PurchaseEvent) {
     },
     videoProof: {
       title: "Brand Creative Reel, Motion Posters & Ad Asset Showcase",
-      duration: "3:15 min",
-      videoType: "4K Showreel",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: seoReelVideo,
       caption: "Explore our dynamic portfolio of luxury branding suites, high-CTR performance ad sets, and packaging systems.",
       highlights: [
         { time: "0:00", label: "Luxury Brand Mark Geometry & Color Systems" },
@@ -1652,9 +1637,10 @@ ffmpeg -i master_4k.mov \\
     },
     videoProof: {
       title: "4K Showreel: Viral Instagram Reels, Product Commercials & Motion Typography",
-      duration: "2:48 min",
-      videoType: "4K Showreel",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "Experience our high-octane editing style, cinematic sound design, and viral short-form retention pacing.",
       highlights: [
         { time: "0:00", label: "Commercial Auto Shoot: Dynamic Camera Moves" },
@@ -1845,9 +1831,10 @@ ffmpeg -i master_4k.mov \\
     },
     videoProof: {
       title: "Comprehensive Brand Identity System & Guidelines Reel Walkthrough",
-      duration: "3:30 min",
-      videoType: "Case Study Video",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: seoReelVideo,
       caption: "Explore how we repositioned a traditional luxury house into a contemporary brand commanding 40% higher price points.",
       highlights: [
         { time: "0:00", label: "Brand Positioning & Category Archetypes" },
@@ -2029,9 +2016,10 @@ ffmpeg -i master_4k.mov \\
     },
     videoProof: {
       title: "Content Cluster Strategy & Search Intent Funnel Blueprint Walkthrough",
-      duration: "4:05 min",
-      videoType: "Loom Walkthrough",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: seoReelVideo,
       caption: "Discover our proprietary topic cluster methodology that drove 180k+ organic readers to an emerging lifestyle brand.",
       highlights: [
         { time: "0:00", label: "Semantic Keyword Cluster Mapping" },
@@ -2218,9 +2206,10 @@ ffmpeg -i master_4k.mov \\
     },
     videoProof: {
       title: "Cinematic Product Shoot Behind-the-Scenes & Final 4K Commercial Reel",
-      duration: "3:05 min",
-      videoType: "4K Showreel",
+      duration: "0:45 min",
+      videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&fm=jpg&q=88&w=1600",
+      videoUrl: paidAdsReelVideo,
       caption: "Take a behind-the-scenes look at our lighting setups, cinema rigs, and final retouched commercial stills.",
       highlights: [
         { time: "0:00", label: "Studio Lighting Setup (Profoto 3-Point System)" },

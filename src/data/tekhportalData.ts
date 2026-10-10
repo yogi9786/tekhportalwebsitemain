@@ -102,15 +102,13 @@ export const TEKHPORTAL_SERVICES: ServiceItem[] = [
     shortTitle: "PPC & Paid Ads",
     kicker: "ROAS Focused",
     description:
-      "High-converting paid media campaigns across Google, Meta, and LinkedIn with laser precision, AI audience targeting, and ruthless optimization.",
+      "High-converting paid media campaigns across Google, Meta, and YouTube with laser precision, AI audience targeting, and ROAS optimization.",
     link: "https://tekhportal.com/paid-advertising-in-yelahanka-bengaluru/",
     subServices: [
       "Google Ads (Search & Display)",
       "YouTube Video & Shorts Ads",
       "Facebook & Instagram Ads",
-      "WhatsApp Direct-to-Chat Ads",
-      "LinkedIn B2B Advertising",
-      "Ruthless Creative Testing & ROAS Optimization"
+      "WhatsApp Direct-to-Chat Ads"
     ],
     metrics: "4.8x Average Return on Ad Spend",
     tag: "Paid Media",

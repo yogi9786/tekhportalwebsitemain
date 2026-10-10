@@ -6,6 +6,7 @@ import { HeroSection } from "./HeroSection";
 import { TrustLogoMarquee } from "./TrustLogoMarquee";
 import { ServicesSection } from "./ServicesSection";
 import { PricingSection } from "./PricingSection";
+import { HomeVideoReelsSection } from "./HomeVideoReelsSection";
 import { BrochureSection } from "./BrochureSection";
 import { FaqSection } from "./FaqSection";
 import { RoadmapSection } from "./RoadmapSection";
@@ -86,6 +87,9 @@ export const TekhportalLanding: React.FC<TekhportalLandingProps> = ({
       <PricingSection
         onSelectPlan={(planName) => handleOpenRegister(planName)}
       />
+
+      {/* 5b. Video Reels Showcase (Below Pricing) */}
+      <HomeVideoReelsSection />
 
       {/* 6. Official PDF Brochure Section */}
       <BrochureSection />

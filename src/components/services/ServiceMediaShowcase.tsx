@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import type { ServiceVideoProof, ServiceImageProof } from "../../types/serviceDetail";
-import { Play, Film, X } from "lucide-react";
+import { Play, Film, X, Volume2, VolumeX, Maximize2 } from "lucide-react";
+import seoReelVideo from "../../assets/tekhportal seo .mp4";
 
 interface ServiceMediaShowcaseProps {
   videoProof: ServiceVideoProof;
@@ -14,8 +15,54 @@ export const ServiceMediaShowcase: React.FC<ServiceMediaShowcaseProps> = ({
   imageProofs,
   serviceTitle
 }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const activeVideoUrl = videoProof.videoUrl || seoReelVideo;
+
+  // Auto-play muted as soon as the page opens or when service changes
+  useEffect(() => {
+    setIsPlaying(true);
+    setIsMuted(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = true;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log("Autoplay waiting for user gesture:", err);
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, [activeVideoUrl]);
+
+  // Tap video to toggle play / pause
+  const handleTogglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  // Tap sound button to toggle mute / unmute without pausing
+  const handleToggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    const nextMuted = !videoRef.current.muted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+  };
 
   return (
     <section className="w-full bg-[#07382c] text-white py-10 sm:py-14 md:py-18 border-b border-[#0c4e3e]">
@@ -38,42 +85,73 @@ export const ServiceMediaShowcase: React.FC<ServiceMediaShowcaseProps> = ({
           {/* Left: Reel Video Player (9:16 Aspect Ratio) */}
           <div className="md:col-span-5 flex justify-center">
             <div 
-              className="relative aspect-9/16 w-full max-w-70 sm:max-w-77.5 rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#10b981]/40 shadow-2xl group cursor-pointer"
-              onClick={() => setIsVideoModalOpen(true)}
+              className="relative aspect-9/16 w-full max-w-70 sm:max-w-77.5 rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#10b981]/40 shadow-2xl group cursor-pointer select-none"
+              onClick={handleTogglePlay}
             >
-              {videoProof.videoUrl ? (
-                <video
-                  src={videoProof.videoUrl}
-                  poster={videoProof.thumbnailUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
-                />
-              ) : (
-                <img
-                  src={videoProof.thumbnailUrl}
-                  alt={videoProof.title || serviceTitle}
-                  className="w-full h-full object-cover opacity-85 group-hover:opacity-95 group-hover:scale-105 transition-all duration-500"
-                />
-              )}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none" />
+              <video
+                ref={videoRef}
+                src={activeVideoUrl}
+                poster={videoProof.thumbnailUrl}
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                className="w-full h-full object-cover"
+              />
 
-              {/* Centered Play Trigger */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              {/* Bottom-Right: Sound Toggle Button (Tap to Unmute / Mute) */}
+              <div className="absolute bottom-3.5 right-3.5 z-20">
+                <button
+                  type="button"
+                  onClick={handleToggleMute}
+                  className="px-3 py-1.5 rounded-full bg-black/75 hover:bg-black/95 backdrop-blur-md text-white text-xs font-semibold flex items-center gap-1.5 border border-white/20 transition-all cursor-pointer shadow-lg active:scale-95"
+                  aria-label={isMuted ? "Unmute reel audio" : "Mute reel audio"}
+                >
+                  {isMuted ? (
+                    <>
+                      <VolumeX className="w-3.5 h-3.5 text-[#10b981]" />
+                      <span className="text-[11px] font-medium tracking-wide">Tap to Unmute</span>
+                    </>
+                  ) : (
+                    <>
+                      <Volume2 className="w-3.5 h-3.5 text-[#10b981] animate-pulse" />
+                      <span className="text-[11px] font-medium tracking-wide">Mute</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Top-Right: Fullscreen / Modal Expand Button */}
+              <div className="absolute top-3.5 right-3.5 z-20">
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsVideoModalOpen(true);
                   }}
-                  className="p-4 sm:p-5 rounded-full bg-[#10b981] text-[#07382c] group-hover:bg-[#fbb753] group-hover:scale-110 transition-all duration-300 shadow-2xl cursor-pointer pointer-events-auto"
-                  aria-label="Play Reel Video"
+                  className="p-2 rounded-full bg-black/65 hover:bg-black/90 backdrop-blur-md text-white/90 hover:text-white border border-white/15 transition-all cursor-pointer shadow-lg active:scale-95"
+                  aria-label="Expand Reel Video"
+                  title="Expand Video"
                 >
-                  <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-current translate-x-0.5" />
+                  <Maximize2 className="w-3.5 h-3.5" />
                 </button>
               </div>
+
+
+
+              {/* Paused Overlay (ONLY visible when paused by user - no black matte overlay when playing) */}
+              {!isPlaying && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 backdrop-blur-[2px] transition-all duration-200 pointer-events-none z-10">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#10b981] text-[#07382c] flex items-center justify-center shadow-2xl shadow-emerald-500/40">
+                    <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current translate-x-0.5" />
+                  </div>
+                  <span className="mt-2.5 text-[11px] font-bold text-white bg-black/70 px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm border border-white/10">
+                    Tap to resume
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -117,9 +195,9 @@ export const ServiceMediaShowcase: React.FC<ServiceMediaShowcaseProps> = ({
               <X className="w-5 h-5" />
             </button>
 
-            {videoProof.videoUrl ? (
+            {activeVideoUrl ? (
               <video
-                src={videoProof.videoUrl}
+                src={activeVideoUrl}
                 controls
                 autoPlay
                 playsInline
