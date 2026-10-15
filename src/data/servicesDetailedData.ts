@@ -2,6 +2,7 @@ import type { DetailedServiceData } from '../types/serviceDetail';
 import seoReelVideo from '../assets/tekhportal seo .mp4';
 import paidAdsReelVideo from '../assets/tekhportalpaid ads RIO.mp4';
 import webDevReelVideo from '../assets/TEKHPORTALWEBSITESERVICE2.mp4';
+import contentCreationReelVideo from '../assets/TEKHPORTAL CONTENT CREATION SERVICE.mp4';
 
 export const DETAILED_SERVICES: Record<string, DetailedServiceData> = {
   "web-dev": {
@@ -1970,13 +1971,13 @@ ffmpeg -i master_4k.mov \\
   "content": {
     id: "content",
     slug: "content",
-    title: "Content Marketing & Strategy",
-    shortTitle: "Content Strategy",
+    title: "Content Creation & Marketing",
+    shortTitle: "Content Creation",
     kicker: "Authority Content",
     heroHeadline: "Persuasive Storytelling that",
     heroHighlightWord: "BUILDS TRUST.",
-    tagline: "High-impact editorial content and copy that turns casual readers into loyal buyers.",
-    description: "SEO blogs, landing page copy, and thought leadership engineered to rank and convert.",
+    tagline: "High-impact editorial content, creative storytelling, and video narratives that turn viewers into loyal clients.",
+    description: "Creative content production, viral reels, SEO articles, and thought leadership engineered to rank, captivate, and convert.",
     accentColor: "#f472b6",
     tag: "Editorial",
     recommendedPlanId: "turbo",
@@ -1987,9 +1988,9 @@ ffmpeg -i master_4k.mov \\
       sublabel: "Driven by authoritative content"
     },
     keyStats: [
-      { value: "250k+", label: "Organic Article Readers" },
+      { value: "250k+", label: "Organic Content Viewers & Readers" },
       { value: "64%", label: "Lower Cost Per Acquisition" },
-      { value: "100%", label: "Original Research & Data" },
+      { value: "100%", label: "Original Creative & Video Media" },
       { value: "4.8x", label: "Average Time On Page" }
     ],
     codeSnippet: {
@@ -2015,17 +2016,17 @@ ffmpeg -i master_4k.mov \\
       ]
     },
     videoProof: {
-      title: "Content Cluster Strategy & Search Intent Funnel Blueprint Walkthrough",
-      duration: "0:45 min",
+      title: "Tekhportal Content Creation Service Showcase",
+      duration: "0:25 min",
       videoType: "Reel Video Proof",
       thumbnailUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&fm=jpg&q=88&w=1600",
-      videoUrl: seoReelVideo,
-      caption: "Discover our proprietary topic cluster methodology that drove 180k+ organic readers to an emerging lifestyle brand.",
+      videoUrl: contentCreationReelVideo,
+      caption: "Discover our dynamic content creation, storytelling, and high-impact messaging engineered to build brand authority and captivate audiences.",
       highlights: [
-        { time: "0:00", label: "Semantic Keyword Cluster Mapping" },
-        { time: "1:20", label: "Thought Leadership vs SEO Pillar Strategy" },
-        { time: "2:30", label: "Lead Magnet & Content Funnel Architecture" },
-        { time: "3:40", label: "Multi-Platform Repurposing (LinkedIn + Newsletter)" }
+        { time: "0:00", label: "Creative Brand Content Strategy & Vision" },
+        { time: "0:08", label: "High-Impact Visual & Video Production" },
+        { time: "0:16", label: "Multi-Platform Storytelling & Social Assets" },
+        { time: "0:25", label: "Measurable Audience Growth & Conversions" }
       ],
       placeholderNote: "Video Proof Canvas: Embed editorial walkthroughs, content performance metrics, and organic readership growth recordings."
     },

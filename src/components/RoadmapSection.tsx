@@ -83,7 +83,7 @@ const DESKTOP_STAGE_POSITIONS: { [key: number]: React.CSSProperties } = {
   3: { left: "32.5%", top: "24%", width: "178px" },
   4: { left: "48.5%", top: "12%", width: "178px" },
   5: { left: "64.5%", top: "0%", width: "178px" },
-  6: { right: "0.5%", top: "-2%", width: "185px" },
+  6: { left: "80.5%", top: "-18%", width: "185px" },
 };
 
 interface RoadmapSectionProps {
@@ -197,7 +197,7 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ onOpenAudit: _on
         {/* ======================================================== */}
         <div
           ref={trackCanvasRef}
-          className="hidden xl:block relative mt-6 mb-4 h-135 xl:h-140 w-full"
+          className="hidden xl:block relative mt-6 xl:mt-16 mb-4 h-135 xl:h-140 w-full"
         >
           {/* Embedded Top-Left Hero Title Block */}
           <div className="absolute top-0 left-0 max-w-md pointer-events-none z-10 space-y-2">

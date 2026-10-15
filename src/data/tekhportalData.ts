@@ -139,13 +139,15 @@ export const TEKHPORTAL_SERVICES: ServiceItem[] = [
   },
   {
     id: "content",
-    title: "Content Marketing",
-    shortTitle: "Content Strategy",
+    title: "Content Creation & Marketing",
+    shortTitle: "Content Creation",
     kicker: "Authority & Reach",
     description:
-      "Compelling, research-backed narratives and editorial strategy that build market authority, educate prospects, and drive organic conversions.",
+      "Compelling brand narratives, high-impact video reels, and editorial strategy that build market authority and captivate audiences.",
     link: "https://tekhportal.com/content-marketing/",
     subServices: [
+      "High-impact content creation",
+      "Short-form social reels & videos",
       "Industry blog writing",
       "Website & landing page copy",
       "SEO content clusters",

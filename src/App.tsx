@@ -22,20 +22,30 @@ export type RouteState = {
   slug?: string;
 };
 
+// Helper to resolve service aliases
+function resolveServiceSlug(slug: string): string {
+  const normalized = slug.toLowerCase();
+  if (normalized === "content-creation" || normalized === "content-marketing") {
+    return "content";
+  }
+  return normalized;
+}
+
 // Pure helper function to parse route from location
 function parseRouteFromLocation(): RouteState {
   if (typeof window === "undefined") return { type: "home" };
 
   const hash = window.location.hash.toLowerCase();
   const searchParams = new URLSearchParams(window.location.search);
-  const queryService = searchParams.get("service")?.toLowerCase();
+  const rawQuery = searchParams.get("service")?.toLowerCase();
 
-  if (queryService) {
-    if (queryService === "all") {
+  if (rawQuery) {
+    if (rawQuery === "all") {
       return { type: "all-services" };
     }
-    if (DETAILED_SERVICES[queryService]) {
-      return { type: "service", slug: queryService };
+    const resolved = resolveServiceSlug(rawQuery);
+    if (DETAILED_SERVICES[resolved]) {
+      return { type: "service", slug: resolved };
     }
   }
 
@@ -44,14 +54,17 @@ function parseRouteFromLocation(): RouteState {
     return { type: "all-services" };
   }
 
-  // Match patterns like #/services/seo or #/service/seo
+  // Match patterns like #/services/seo or #/service/seo or #/services/content-creation
   const serviceMatch = hash.match(/^#\/?(?:services|service)\/([a-z0-9-]+)/i);
-  if (serviceMatch && serviceMatch[1] && DETAILED_SERVICES[serviceMatch[1]]) {
-    return { type: "service", slug: serviceMatch[1] };
+  if (serviceMatch && serviceMatch[1]) {
+    const resolved = resolveServiceSlug(serviceMatch[1]);
+    if (DETAILED_SERVICES[resolved]) {
+      return { type: "service", slug: resolved };
+    }
   }
 
-  // Check direct match like #seo
-  const directSlug = hash.replace(/^#\/?/, "");
+  // Check direct match like #seo or #content-creation
+  const directSlug = resolveServiceSlug(hash.replace(/^#\/?/, ""));
   if (DETAILED_SERVICES[directSlug]) {
     return { type: "service", slug: directSlug };
   }
@@ -92,7 +105,7 @@ export function App() {
   };
 
   const handleNavigateService = (slug: string) => {
-    const normalized = slug.toLowerCase();
+    const normalized = resolveServiceSlug(slug);
     if (DETAILED_SERVICES[normalized]) {
       setCurrentRoute({ type: "service", slug: normalized });
       window.location.hash = `/services/${normalized}`;
